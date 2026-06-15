@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  @apply bg-ink-900 text-body font-sans antialiased;
+}
+
+/* Faint turtle watermark behind everything, blending into the navy. */
+.page-bg::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("/logo-transparent.png");
+  background-repeat: no-repeat;
+  background-position: center -60px;
+  background-size: min(70vw, 620px);
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Persian content: switch font + direction. */
+[dir="rtl"] {
+  @apply font-fa;
+}
+
+/* Thin, cozy scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-ink-700 rounded-full;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* --- Markdown article styling --- */
+.prose-cozy {
+  @apply text-body leading-relaxed;
+}
+.prose-cozy h1,
+.prose-cozy h2,
+.prose-cozy h3 {
+  @apply font-serif text-coral font-semibold mt-8 mb-3 leading-tight;
+}
+.prose-cozy h1 {
+  @apply text-2xl;
+}
+.prose-cozy h2 {
+  @apply text-xl;
+}
+.prose-cozy h3 {
+  @apply text-lg;
+}
+.prose-cozy p {
+  @apply my-4;
+}
+.prose-cozy a {
+  @apply text-accent-soft hover:underline break-words;
+}
+.prose-cozy ul {
+  @apply list-disc my-4 ps-6 space-y-1;
+}
+.prose-cozy ol {
+  @apply list-decimal my-4 ps-6 space-y-1;
+}
+.prose-cozy blockquote {
+  @apply border-s-2 border-ink-600 ps-4 my-4 text-muted italic;
+}
+.prose-cozy img {
+  @apply rounded-lg my-6 max-w-full border border-ink-700;
+}
+.prose-cozy code:not(pre code) {
+  @apply bg-ink-800 text-accent-soft px-1.5 py-0.5 rounded text-[0.85em] font-mono;
+}
+.prose-cozy hr {
+  @apply border-ink-700 my-8;
+}
+.prose-cozy table {
+  @apply my-4 w-full text-sm border-collapse;
+}
+.prose-cozy th,
+.prose-cozy td {
+  @apply border border-ink-700 px-3 py-1.5 text-start;
+}

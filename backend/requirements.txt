@@ -1,0 +1,5 @@
+Django>=5.2,<6.0  # 5.2 LTS — required for Python 3.14 support
+djangorestframework
+django-cors-headers
+django-filter
+Pillow

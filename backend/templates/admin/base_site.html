@@ -1,0 +1,14 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block extrastyle %}{{ block.super }}
+<link rel="stylesheet" href="{% static 'admin/dashboard.css' %}">
+{% endblock %}
+
+{% block title %}{{ title }} | داشبورد مِمِنتو{% endblock %}
+
+{% block branding %}
+<h1 id="site-name">
+  <a href="{% url 'admin:index' %}">🪶 داشبورد مِمِنتو</a>
+</h1>
+{% endblock %}

@@ -1,0 +1,197 @@
+/* Memento admin dashboard — cozy dark-navy theme, harmonised with the site.
+   Loaded by PostAdmin.Media and the base_site.html / index.html overrides. */
+
+:root {
+    --m-bg: #222a33;
+    --m-surface: #283039;
+    --m-border: #2f3842;
+    --m-accent: #3f78e0;
+    --m-accent-soft: #5b8ef0;
+    --m-coral: #e0655a;
+    --m-body: #b9c0c9;
+    --m-muted: #727d8a;
+
+    /* Override Django's default admin variables. */
+    --primary: var(--m-surface);
+    --secondary: var(--m-accent);
+    --header-bg: var(--m-surface);
+    --header-color: #fff;
+    --header-link-color: #fff;
+    --link-fg: var(--m-accent-soft);
+    --link-hover-color: #fff;
+    --button-bg: var(--m-accent);
+    --button-hover-bg: var(--m-accent-soft);
+    --default-button-bg: var(--m-accent);
+    --body-fg: var(--m-body);
+    --body-bg: var(--m-bg);
+    --body-quiet-color: var(--m-muted);
+}
+
+/* Use a friendly Persian font for the whole RTL dashboard. */
+body,
+#header,
+.module h2,
+input,
+textarea,
+select,
+.button {
+    font-family: Vazirmatn, Tahoma, "Segoe UI", sans-serif;
+}
+
+body {
+    background: var(--m-bg);
+    color: var(--m-body);
+}
+
+/* Branded header bar. */
+#header {
+    background: linear-gradient(90deg, #283039, #2f3842);
+    color: #fff;
+    border-bottom: 2px solid var(--m-accent);
+    padding: 14px 40px;
+}
+
+#branding h1,
+#branding h1 a:link,
+#branding h1 a:visited {
+    color: #fff;
+    font-weight: 700;
+}
+
+a:link,
+a:visited {
+    color: var(--m-accent-soft);
+}
+
+/* Cards / modules. */
+.module {
+    background: var(--m-surface);
+    border: 1px solid var(--m-border);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.module caption,
+.module h2,
+.inline-group h2 {
+    background: var(--m-border);
+    color: #fff;
+}
+
+/* Inputs. */
+input[type=text],
+input[type=url],
+input[type=number],
+input[type=password],
+textarea,
+select {
+    background: var(--m-bg);
+    color: #eef1f5;
+    border: 1px solid var(--m-border);
+    border-radius: 8px;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--m-accent);
+    outline: none;
+}
+
+/* The big Markdown body editor. */
+textarea.markdown-editor {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    direction: ltr;       /* code/markdown reads left-to-right even on an RTL page */
+    text-align: left;
+}
+
+/* Buttons. */
+.button,
+input[type=submit],
+.submit-row input {
+    background: var(--m-accent);
+    color: #fff;
+    border-radius: 8px;
+    border: none;
+}
+
+.button:hover,
+input[type=submit]:hover,
+.submit-row input:hover {
+    background: var(--m-accent-soft);
+}
+
+.submit-row {
+    background: var(--m-surface);
+    border-radius: 12px;
+    border: 1px solid var(--m-border);
+}
+
+.submit-row a.deletelink {
+    background: var(--m-coral);
+    border-radius: 8px;
+}
+
+/* Rows & tables. */
+#changelist table thead th {
+    background: var(--m-border);
+    color: #fff;
+}
+
+#content table tr {
+    background: var(--m-surface);
+}
+
+#content table tr.row2 {
+    background: #2c343e;
+}
+
+/* Helper / description text. */
+.help,
+.helptext,
+p.help {
+    color: var(--m-muted);
+}
+
+/* ----- Quick-action cards on the dashboard home (index.html) ----- */
+.m-quick {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin: 8px 0 28px;
+}
+
+.m-quick a {
+    flex: 1 1 200px;
+    background: var(--m-surface);
+    border: 1px solid var(--m-border);
+    border-radius: 14px;
+    padding: 20px;
+    color: var(--m-body);
+    text-decoration: none;
+    transition: transform .15s ease, border-color .15s ease;
+}
+
+.m-quick a:hover {
+    transform: translateY(-3px);
+    border-color: var(--m-accent);
+}
+
+.m-quick .m-emoji {
+    font-size: 28px;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.m-quick .m-title {
+    color: #fff;
+    font-weight: 700;
+    display: block;
+}
+
+.m-quick .m-desc {
+    color: var(--m-muted);
+    font-size: 13px;
+}
