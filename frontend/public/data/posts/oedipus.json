@@ -1,0 +1,30 @@
+{
+  "id": 33,
+  "title": "اودیپوس",
+  "slug": "oedipus",
+  "category": {
+    "id": 5,
+    "name": "Minerva",
+    "name_fa": "مینروا",
+    "slug": "minerva",
+    "description": "",
+    "icon": "𓅓",
+    "post_count": 1
+  },
+  "language": "fa",
+  "excerpt": "بنگرید فرزندان تبای! این ادیپوس بزرگتر مردان و رازگشای ژرفترین معماها بود",
+  "body": "بنگرید فرزندان تبای! این ادیپوس بزرگتر مردان و رازگشای ژرفترین معماها بود و بهروزی تابناکش محسود همگان. بنگرید که چگونه در گرداب تیره‌بختی غوطه‌ور است. پس بدانید که انسان فانی باید همیشه فرجام را بنگرد و هیچکس را نمی‌توان  سعادتمند دانست مگر آنگاه که قرین سعادت در گور بیارمد.\r\n\r\n![oedipus](http://localhost:8000/media/attachments/image_access_800.jpg)",
+  "cover_image": null,
+  "source_url": "",
+  "attachments": [
+    {
+      "id": 6,
+      "kind": "image",
+      "title": "",
+      "file": "media/attachments/image_access_800.jpg",
+      "order": 0
+    }
+  ],
+  "created_at": "2026-06-16T00:48:43+03:30",
+  "updated_at": "2026-06-16T01:05:11.927754+03:30"
+}

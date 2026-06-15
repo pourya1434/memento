@@ -9,6 +9,15 @@
     "post_count": 0
   },
   {
+    "id": 5,
+    "name": "Minerva",
+    "name_fa": "مینروا",
+    "slug": "minerva",
+    "description": "",
+    "icon": "𓅓",
+    "post_count": 1
+  },
+  {
     "id": 3,
     "name": "Literature",
     "name_fa": "ادبیات",
