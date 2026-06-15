@@ -1,22 +1,68 @@
-import axios from "axios";
+// Static data layer — no server required.
+//
+// The site is built from JSON exported by the Django `export_static` command
+// (backend/blog/management/commands/export_static.py). Filtering, search, and
+// pagination that the REST API used to do are replicated here in the browser,
+// so the public site can be hosted as static files (e.g. GitHub Pages).
 
-// Point the frontend at the Django API. Override with VITE_API_URL in
-// a .env file for production.
-const baseURL = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000/api";
+// BASE_URL is "/" locally and "/<repo>/" on GitHub Pages project sites.
+const BASE = import.meta.env.BASE_URL;
 
-export const api = axios.create({ baseURL });
+const loadJson = (path) =>
+  fetch(`${BASE}${path}`).then((r) => {
+    if (!r.ok) throw new Error(`Failed to load ${path}: ${r.status}`);
+    return r.json();
+  });
 
-export const getCategories = () =>
-  api.get("/categories/").then((r) => r.data.results ?? r.data);
+// Fetch each dataset at most once.
+let categoriesPromise;
+let postsPromise;
+const loadCategories = () => (categoriesPromise ??= loadJson("data/categories.json"));
+const loadPosts = () => (postsPromise ??= loadJson("data/posts.json"));
 
-export const getPosts = (params = {}) =>
-  api.get("/posts/", { params }).then((r) => r.data);
+// Must match Django's old REST_FRAMEWORK PAGE_SIZE (and Home.jsx).
+const PAGE_SIZE = 10;
+
+export const getCategories = () => loadCategories();
+
+export const getPosts = async (params = {}) => {
+  let items = await loadPosts();
+
+  const page = params.page || 1;
+  const categorySlug = params["category__slug"];
+  const search = (params.search || "").trim().toLowerCase();
+
+  if (categorySlug) {
+    items = items.filter((p) => p.category && p.category.slug === categorySlug);
+  }
+  if (search) {
+    items = items.filter((p) =>
+      [p.title, p.excerpt, p.body]
+        .filter(Boolean)
+        .some((text) => text.toLowerCase().includes(search))
+    );
+  }
+
+  const count = items.length;
+  const start = (page - 1) * PAGE_SIZE;
+  const results = items.slice(start, start + PAGE_SIZE);
+
+  // Same shape Home.jsx expects from the old paginated API.
+  return {
+    count,
+    results,
+    next: start + PAGE_SIZE < count ? page + 1 : null,
+    previous: page > 1 ? page - 1 : null,
+  };
+};
 
 export const getPost = (slug) =>
-  api.get(`/posts/${slug}/`).then((r) => r.data);
+  loadJson(`data/posts/${encodeURIComponent(slug)}.json`);
 
-// Media files come back as absolute URLs from DRF already; this is a
-// safety net for any relative paths.
-const ORIGIN = baseURL.replace(/\/api\/?$/, "");
-export const mediaUrl = (path) =>
-  !path ? "" : path.startsWith("http") ? path : `${ORIGIN}${path}`;
+// Build a usable URL for a media path. Exported paths are repo-relative
+// (e.g. "media/covers/x.jpg"); absolute URLs are passed through untouched.
+export const mediaUrl = (path) => {
+  if (!path) return "";
+  if (/^https?:\/\//.test(path)) return path;
+  return `${BASE}${String(path).replace(/^\//, "")}`;
+};

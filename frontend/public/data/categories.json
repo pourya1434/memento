@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "Programming",
+    "name_fa": "برنامه‌نویسی",
+    "slug": "programming",
+    "description": "",
+    "icon": "›_",
+    "post_count": 0
+  },
+  {
+    "id": 2,
+    "name": "Art",
+    "name_fa": "هنر",
+    "slug": "art",
+    "description": "",
+    "icon": "✦",
+    "post_count": 1
+  },
+  {
+    "id": 3,
+    "name": "Literature",
+    "name_fa": "ادبیات",
+    "slug": "literature",
+    "description": "",
+    "icon": "❝",
+    "post_count": 1
+  },
+  {
+    "id": 4,
+    "name": "Soundtracks",
+    "name_fa": "موسیقی",
+    "slug": "soundtracks",
+    "description": "",
+    "icon": "🎵",
+    "post_count": 0
+  }
+]

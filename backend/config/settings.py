@@ -1,11 +1,15 @@
 """
 Django settings for the personal website backend.
+
+This backend runs locally only — it's the authoring tool. You write posts in the
+admin, then `python manage.py export_static` snapshots everything to static JSON
+the frontend reads. The public site is static (GitHub Pages); see PAGES_DEPLOY.md.
 """
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# SECURITY WARNING: change this and keep it secret in production.
+# Local authoring tool — not a public server, so these defaults are fine.
 SECRET_KEY = "django-insecure-change-me-in-production-0123456789abcdef"
 
 DEBUG = True
