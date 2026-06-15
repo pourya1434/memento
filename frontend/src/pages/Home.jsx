@@ -56,12 +56,14 @@ export default function Home() {
     <div className="mx-auto max-w-2xl">
       <header className="mb-10">
         <h1 className="font-serif text-3xl font-bold text-body sm:text-4xl">
-          {category ? category.name : "Latest"}
+          {/* latest */}
+          {category ? category.name : ""}
         </h1>
         <p className="mt-2 text-muted">
+          {/* bio: "A cozy corner for notes on programming, art, and literature." */}
           {category
             ? category.description || "Posts in this category."
-            : "A cozy corner for notes on programming, art, and literature."}
+            : ""}
         </p>
 
         <input

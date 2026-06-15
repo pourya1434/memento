@@ -18,13 +18,16 @@ export default function Layout() {
   }, [open]);
 
   return (
-    <div className="page-bg relative min-h-full">
+    <div
+      className="page-bg relative min-h-full"
+      style={{ "--logo-url": `url(${import.meta.env.BASE_URL}logo-transparent.png)` }}
+    >
       {/* Top bar — brand on the left, menu button on the right */}
       <header className="sticky top-0 z-30 border-b border-ink-700 bg-ink-900/85 backdrop-blur">
         <div className="mx-auto flex max-w-3xl items-center justify-between px-5 py-3 sm:px-8">
           <Link to="/" className="flex items-center gap-2.5">
             <img
-              src="/logo-transparent.png"
+              src={`${import.meta.env.BASE_URL}logo-transparent.png`}
               alt="logo"
               className="h-9 w-9 opacity-90"
             />

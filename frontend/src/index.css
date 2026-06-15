@@ -21,7 +21,7 @@ body {
   content: "";
   position: fixed;
   inset: 0;
-  background-image: url("/logo-transparent.png");
+  background-image: var(--logo-url);
   background-repeat: no-repeat;
   background-position: center -60px;
   background-size: min(70vw, 620px);
